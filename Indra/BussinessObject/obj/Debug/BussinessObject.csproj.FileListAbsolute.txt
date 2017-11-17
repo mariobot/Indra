@@ -1,0 +1,6 @@
+C:\Desarrollo\Indra\Indra\BussinessObject\bin\Debug\BussinessObject.dll
+C:\Desarrollo\Indra\Indra\BussinessObject\bin\Debug\BussinessObject.pdb
+C:\Desarrollo\Indra\Indra\BussinessObject\obj\Debug\BussinessObject.csproj.CoreCompileInputs.cache
+C:\Desarrollo\Indra\Indra\BussinessObject\obj\Debug\BussinessObject.dll
+C:\Desarrollo\Indra\Indra\BussinessObject\obj\Debug\BussinessObject.pdb
+C:\Desarrollo\Indra\Indra\BussinessObject\obj\Debug\BussinessObject.csprojResolveAssemblyReference.cache

@@ -1,0 +1,10 @@
+C:\Desarrollo\Indra\Indra\BussinessLoyic\obj\Debug\BussinessLoyic.csprojResolveAssemblyReference.cache
+C:\Desarrollo\Indra\Indra\BussinessLoyic\obj\Debug\BussinessLoyic.csproj.CoreCompileInputs.cache
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\BussinessLoyic.dll
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\BussinessLoyic.pdb
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\BussinessObject.dll
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\DataAccess.dll
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\BussinessObject.pdb
+C:\Desarrollo\Indra\Indra\BussinessLoyic\bin\Debug\DataAccess.pdb
+C:\Desarrollo\Indra\Indra\BussinessLoyic\obj\Debug\BussinessLoyic.dll
+C:\Desarrollo\Indra\Indra\BussinessLoyic\obj\Debug\BussinessLoyic.pdb
