@@ -10,7 +10,7 @@ namespace BussinessLoyic
 {
     public class RegistroBL
     {
-        public int AlmacenarRegistro(UsuarioBO _usuarioBO)
+        public double AlmacenarRegistro(UsuarioBO _usuarioBO)
         {
             try
             {
@@ -19,17 +19,33 @@ namespace BussinessLoyic
 
                 _registroBO.FechaRegistro = DateTime.Now;
                 _registroBO.Nombre = _usuarioBO.Nombre;
-                _registroBO.Respuesta = _usuarioBO.Limite;
+                _registroBO.Respuesta = CalcularBL.Numero(_usuarioBO.Limite);
 
                 var result = _registroDA.AdicionarRegistro(_registroBO);
 
-                return 1;
+                return _registroBO.Respuesta;
             }
 
             catch
             {
                 throw;
             }
+        }
+
+        public List<RegistroBO> TotalRegistros()
+        {
+            RegistroDA _registroDA = new RegistroDA();
+
+            return _registroDA.TodosLosRegistros(); 
+        }
+
+        public void EliminarRegistro(RegistroBO _registroBO)
+        {
+            RegistroDA _registroDA = new RegistroDA();
+
+            _registroDA.EliminarRegistro(_registroBO);
+
+            return;
         }
     }
 }

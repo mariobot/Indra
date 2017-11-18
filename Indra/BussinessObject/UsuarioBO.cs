@@ -14,9 +14,9 @@ namespace BussinessObject
         [StringLength(100, ErrorMessage = "Numero maximo de 100 Caracteres")]
         public string Nombre { get; set; }
         
-        //[Required(ErrorMessage = "El Limite es requerido")]
+        [Required(ErrorMessage = "El Limite es requerido")]
         //[StringLength(5, ErrorMessage = "Numero maximo de 5 digitos")]
-        //[Range(0, 99999, ErrorMessage = "Por favor ingrese un valor numerico entre 3 y 99999")]
+        [Range(0, 99999, ErrorMessage = "Por favor ingrese un valor numerico entre 3 y 99999")]
         public int Limite { get; set; }
     }
 }

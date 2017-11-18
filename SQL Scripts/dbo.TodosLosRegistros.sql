@@ -1,0 +1,5 @@
+﻿CREATE PROCEDURE [dbo].[TodosLosRegistros]	
+AS
+BEGIN
+	SELECT * FROM REGISTROS;
+END;

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<BussinessObject.RegistroBO>
+
+@{
+    ViewBag.Title = "Consultar";
+}
+
+<br />
+
+<h2>Consultar Informacion</h2>
+
+@using (Html.BeginForm("Consultar", "Registro", FormMethod.Get))
+{
+    <b>Consultar por: </b>
+    <p>
+        <b>Usuario: </b> @Html.TextBox("Nombre")
+        <b>Respuesta(Minima): </b>@Html.TextBox("RespuestaMin")
+        <b>Respuesta(Maxima): </b>@Html.TextBox("RespuestaMax")
+        <input type="submit" class="btn btn-success" value="Consultar" />
+    </p>
+    
+} 
+<table class="table table-responsive">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Respuesta)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaRegistro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Respuesta)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FechaRegistro)
+        </td>
+        <td>            
+            @Html.ActionLink("Eliminar", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

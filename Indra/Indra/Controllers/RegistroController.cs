@@ -17,40 +17,31 @@ namespace Indra.Controllers
             _registroBL = new RegistroBL();
         }
 
-        // GET: Registro
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        // GET: Registro/Details/5
-        public ActionResult Details(int id)
-        {
-            return View();
-        }
-
-        // GET: Registro/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Registro/Create
         [HttpPost]        
         public ActionResult Create(UsuarioBO _usuarioBO)
         {
+            double total = 0;
+
             try
             {
                 if (ModelState.IsValid)
                 {
                     if (ValidarBL.Nombre(_usuarioBO.Nombre))
                     {
-                        _registroBL.AlmacenarRegistro(_usuarioBO);
+                        total = _registroBL.AlmacenarRegistro(_usuarioBO);
                         ViewBag.Message = null;
-                        return RedirectToAction("Index");
+                        ViewBag.Total = String.Format("Resultado: {0}", total);
+                        return View(_usuarioBO);
                     }
-                    else                    
-                        ViewBag.Message = String.Format("El nombre {0} no es valido, no se encuentra en la lista permitida",_usuarioBO.Nombre);                                     
+                    else { 
+                        ViewBag.Message = String.Format("El nombre {0} no es valido, no se encuentra en la lista permitida",_usuarioBO.Nombre);
+                        ViewBag.Total = String.Format("Resultado: {0}", total);
+                    }
                 }
 
                 return View(_usuarioBO);
@@ -59,45 +50,41 @@ namespace Indra.Controllers
             {
                 return View(_usuarioBO);
             }
-        }
+        }        
 
-        // GET: Registro/Edit/5
-        public ActionResult Edit(int id)
+        [HttpGet]
+        public ActionResult Consultar(string Nombre, double? RespuestaMin, double? RespuestaMax)
         {
-            return View();
-        }
+            var registros = _registroBL.TotalRegistros();
 
-        // POST: Registro/Edit/5
-        [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
-        {
-            try
-            {
-                // TODO: Add update logic here
+            registros = FiltrarBL.Filtrar(registros, Nombre, RespuestaMin, RespuestaMax);
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
-        }
+            return View(registros);
+        }        
 
         // GET: Registro/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            var registro = _registroBL.TotalRegistros().Where(p => p.ID == id).FirstOrDefault();
+
+            if (ValidarBL.FechaEliminacion(registro.FechaRegistro))
+                ViewBag.Delete = true;
+            else
+                ViewBag.Delete = false;
+            
+            return View(registro);
         }
 
         // POST: Registro/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, RegistroBO _registroBO)
         {
             try
             {
                 // TODO: Add delete logic here
+                _registroBL.EliminarRegistro(_registroBO);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Consultar");
             }
             catch
             {

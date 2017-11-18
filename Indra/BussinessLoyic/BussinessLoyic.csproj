@@ -40,9 +40,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CalcularBL.cs" />
+    <Compile Include="FiltrarBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegistroBL.cs" />
-    <Compile Include="ValidarNombreBL.cs" />
+    <Compile Include="ValidarBL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BussinessObject\BussinessObject.csproj">

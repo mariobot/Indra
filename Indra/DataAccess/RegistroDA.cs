@@ -38,5 +38,54 @@ namespace DataAccess
                 throw;
             }
         }
+
+        public List<RegistroBO> TodosLosRegistros()
+        {
+            SqlCommand cmd = new SqlCommand("TodosLosRegistros", con);
+            cmd.CommandType = CommandType.StoredProcedure;
+            con.Open();
+
+            SqlDataReader reader = cmd.ExecuteReader();
+            cmd.Dispose();
+
+            List<RegistroBO> ListaRegistros = new List<RegistroBO>();
+
+            RegistroBO _registroBO;
+
+            while (reader.Read())
+            {
+                _registroBO = new RegistroBO();
+                _registroBO.ID = int.Parse(reader["ID"].ToString());
+                _registroBO.Nombre = reader["Nombre"].ToString();
+                _registroBO.Respuesta = double.Parse(reader["Respuesta"].ToString());
+                _registroBO.FechaRegistro = DateTime.Parse(reader["FechaRegistro"].ToString());
+                ListaRegistros.Add(_registroBO);
+            }
+
+            return ListaRegistros;
+        }
+
+        public int EliminarRegistro(RegistroBO _registroBO)
+        {
+            try
+            {
+                SqlCommand cmd = new SqlCommand("EliminarRegistro", con);
+
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.AddWithValue("@ID", _registroBO.ID);                
+
+                con.Open();
+                int Result = cmd.ExecuteNonQuery();
+                cmd.Dispose();
+
+                return Result;
+            }
+
+            catch
+            {
+                throw;
+            }
+        }
     }
 }
